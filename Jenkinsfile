@@ -7,8 +7,8 @@ node{
     
     stage('Run Docker Compose File') { 
         withCredentials([usernamePassword(credentialsId: 'local-pass', usernameVariable: "myuser", passwordVariable: "mypass")]) {
-            sh 'sshpass -p "${mypass}" | sudo docker-compose build' 
-            sh 'sshpass -p "${mypass}" | sudo docker-compose up -d' 
+            sh 'sshpass -p "${mypass}" | sudo docker compose build' 
+            sh 'sshpass -p "${mypass}" | sudo docker compose up -d' 
         } 
     }
   stage('PUSH image to Docker Hub')
