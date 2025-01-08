@@ -6,7 +6,7 @@ node{
     }
     
     stage('Run Docker Compose File')
-        withCredentials([usernamePassqord(credntialsID: 'local-pass', usernameVariable: "myuser", passwordVariable: "mypass")])
+        withCredentials([usernamePassword(credntialsID: 'local-pass', usernameVariable: "myuser", passwordVariable: "mypass")])
     {
         sh 'sshpass -p "mypass" | sudo docker-compose build'
         sh 'sudo docker-compose up -d'
