@@ -5,11 +5,11 @@ node{
         git url: 'https://github.com/sayeedsak/online-shop.git'
     }
     
-    stage('Run Docker Compose File')
-        withCredentials([usernamePassword(credntialsID: 'local-pass', usernameVariable: "myuser", passwordVariable: "mypass")])
-    {
-        sh 'sshpass -p "mypass" | sudo docker-compose build'
-        sh 'sudo docker-compose up -d'
+    stage('Run Docker Compose File') { 
+        withCredentials([usernamePassword(credentialsId: 'local-pass', usernameVariable: "myuser", passwordVariable: "mypass")]) {
+            sh 'sshpass -p "${mypass}" | sudo docker-compose build' 
+            sh 'sudo docker-compose up -d' 
+        } 
     }
   stage('PUSH image to Docker Hub')
     {
